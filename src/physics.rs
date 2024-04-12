@@ -1,4 +1,5 @@
 use crate::api::{Container, ContainerStatus};
+use crate::api::ContainerStatus::{FROZEN, RUNNING};
 
 struct ContainerImpl {
     status: ContainerStatus
@@ -25,12 +26,26 @@ impl Container for ContainerImpl {
         todo!()
     }
 
-    fn freeze(&self) -> Result<(), None> {
-        todo!()
+    fn freeze(&mut self) -> Result<(), None> {
+        if self.status == FROZEN {
+            //just return if already frozen
+            return Ok(())
+        }
+
+        self.status = FROZEN;
+
+        return Ok(())
     }
 
-    fn unfreeze(&self) -> Result<(), None> {
-        todo!()
+    fn unfreeze(&mut self) -> Result<(), None> {
+        if self.status != RUNNING {
+            //just return if not running
+            return Ok(())
+        }
+
+        self.status = RUNNING;
+
+        return Ok(())
     }
 
     fn stop(&self) -> Result<(), None> {
