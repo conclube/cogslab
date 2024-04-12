@@ -1,3 +1,4 @@
+#[derive(Eq, Copy, Clone, PartialEq)]
 pub enum ContainerStatus {
     UNTOUCHED,
     INITIALIZED,
