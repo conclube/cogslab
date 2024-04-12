@@ -1,4 +1,10 @@
-use cogslab::{ContainerImpl, ContainerStatus};
+pub enum ContainerStatus {
+    UNTOUCHED,
+    INITIALIZED,
+    RUNNING,
+    FROZEN,
+    TERMINATED
+}
 
 pub trait Container {
     fn initialize(&self) -> Result<(),None>;
@@ -14,4 +20,19 @@ pub trait Container {
     fn stop(&self) -> Result<(),None>;
 
     fn get_status(&self) -> ContainerStatus;
+}
+
+//common cog data
+pub struct CogInfo {
+
+}
+
+//super type of all cogs
+pub trait Cog {
+    fn get_info(&self) -> CogInfo;
+
+}
+
+pub trait CogHolder {
+
 }

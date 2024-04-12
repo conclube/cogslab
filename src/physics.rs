@@ -1,4 +1,16 @@
+use crate::api::{Container, ContainerStatus};
 
+struct ContainerImpl {
+    status: ContainerStatus
+}
+
+impl ContainerImpl {
+    pub fn new() -> ContainerImpl {
+        return ContainerImpl {
+            status: ContainerStatus::UNTOUCHED,
+        }
+    }
+}
 
 impl Container for ContainerImpl {
     fn initialize(&self) -> Result<(), None> {
